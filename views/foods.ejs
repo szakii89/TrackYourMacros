@@ -1,0 +1,60 @@
+<%- include("header") -%>
+
+<h1>Track Your Macros</h1>
+<h3><%= thisDay %></h3>
+<h3>What did you ate today?</h3>
+<form class="" action="/" method="post">
+  Food: <input type="text" name="foodName" value="">
+  Quantity: <input type="number" step="0.01" name="foodQuantity" value=""> grams
+  <button type="submit" name="button">Add</button>
+</form>
+<h3>Total:</h3>
+<table>
+  <tr>
+    <th class="nameField">Foods</th>
+    <th class="quantityField">Quantity (grams)</th>
+    <th class="proteinField">Proteins (grams)</th>
+    <th class="fatField">Fats (grams)</th>
+    <th class="carbField">Carbohydrates (grams)</th>
+    <th class="calorieField">Calories (kcal)</th>
+  </tr>
+    <% for (var i = 0; i < foods.length; i++) {%>
+  <tr>
+    <td class="nameField"><%= foods[i]; %></td>
+    <td class="quantityField"><%= quantity[i]; %></td>
+    <td class="proteinField"><%= proteins[i].toFixed(2); %></td>
+    <td class="fatField"><%= fats[i].toFixed(2); %></td>
+    <td class="carbField"><%= carbs[i].toFixed(2); %></td>
+    <td class="calorieField"><%= calories[i].toFixed(2); %></td>
+  </tr>
+  <% } %>
+  <tr class="totalRow">
+<% var sumQuantity = 0;  %>
+<% var sumProteins = 0;  %>
+<% var sumFats = 0;  %>
+<% var sumCarbs = 0;  %>
+<% var sumCalories = 0;  %>
+<% quantity.forEach(function(item) {%>
+<% sumQuantity += item; %>
+<% }); %>
+<% proteins.forEach(function(item) {%>
+<% sumProteins += item; %>
+<% }); %>
+<% fats.forEach(function(item) {%>
+<% sumFats += item; %>
+<% }); %>
+<% carbs.forEach(function(item) {%>
+<% sumCarbs += item; %>
+<% }); %>
+<% calories.forEach(function(item) {%>
+<% sumCalories += item; %>
+<% }); %>
+    <td class="nameField">Total</td>
+    <td class="quantityField" id="totalQuantity"><%= sumQuantity %></td>
+    <td class="proteinField" id="totalProteins"><%= sumProteins.toFixed(2) %></td>
+    <td class="fatField" id="totalFats"><%= sumFats.toFixed(2) %></td>
+    <td class="carbField" id="totalCarbs"><%= sumCarbs.toFixed(2) %></td>
+    <td class="calorieField" id="totalCalories"><%= sumCalories.toFixed(2) %></td>
+  </tr>
+</table>
+<%- include("footer") -%>

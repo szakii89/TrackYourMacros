@@ -1,0 +1,58 @@
+<%- include("header") -%>
+
+<h1>Macro Database</h1>
+
+<h3>Add new food to the Database</h3>
+<form action="/macroDB" method="post">
+  <div class="form-group">
+    <input type="text" name="newFoodName" placeholder="Food" required>
+  </div>
+  <div class="form-group">
+    <input type="number" step="0.01" name="newFoodProtein" placeholder="Proteins" required>
+  </div>
+  <div class="form-group">
+    <input type="number" step="0.01" name="newFoodFat" placeholder="Fat" required>
+  </div>
+  <div class="form-group">
+    <input type="number" step="0.01" name="newFoodCH" placeholder="Carbs" required>
+  </div>
+  <div class="form-group">
+    <input type="number" step="0.01" name="newFoodCalories" placeholder="Calories" required>
+  </div>
+  <div class="form-group">
+    <input type="text" name="newFoodComment" placeholder="Comment">
+  </div>
+  <button type="submit" name="submitNewFood">Submit</button>
+</form>
+
+<table>
+  <tr>
+    <th class="nameField">Name</th>
+    <th class="proteinField">Protein</th>
+    <th class="fatField">Fat</th>
+    <th class="carbField">CH</th>
+    <th class="calorieField">Calories</th>
+    <th class="commentField">Comment</th>
+    <th class="deleteField">Delete</th>
+    <th class="modifyField">Modify</th>
+  </tr>
+
+  <% dataBase.forEach(function(food) { %>
+  <tr>
+    <td class="nameField"><%= food.name %></td>
+    <td class="proteinField"><%= food.proteins %></td>
+    <td class="fatField"><%= food.fats %></td>
+    <td class="carbField"><%= food.carbohydrates %></td>
+    <td class="calorieField"><%= food.calories %></td>
+    <td class="commentField"><%= food.comment %></td>
+    <td class="deleteField"><form action="/delete" method="post">
+      <button class="deleteButton" type="submit" name="deleteButton" value="<%= food.name %>"><i class="fas fa-trash"></i></button>
+    </form></td>
+    <td class="modifyField"><form action="/update" method="post">
+      <button class="updateButton" type="submit" name="updateButton" value="<%= food.name %>"><i class="far fa-edit"></i></button>
+    </form></td>
+  </tr>
+  <% }); %>
+</table>
+
+<%- include("footer") -%>

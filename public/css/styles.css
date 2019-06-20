@@ -1,0 +1,24 @@
+
+i {color: #FFF;}
+i:hover {color: #dfe6e9;}
+table {margin:50px auto;}
+td, th {border: 1px solid black; text-align: center;}
+.nameField{background-color: #7bed9f; padding: 0 5px;}
+.proteinField{background-color: #ea8685; padding: 0 5px;}
+.fatField{background-color: #f6e58d; padding: 0 5px;}
+.carbField{background-color: #c7ecee; padding: 0 5px;}
+.calorieField{background-color: #D6A2E8; padding: 0 5px;}
+.commentField{background-color: #c8d6e5; padding: 0 5px;}
+.quantityField{background-color: #BDC581; padding: 0 5px;}
+.totalRow {font-weight: 700;}
+.deleteButton, .updateButton {
+  padding: none;
+  margin: auto;
+  text-align: center;
+  border: none;
+  border-radius: 50%;
+}
+.deleteButton,
+.deleteField {background: #E75B43; color: #FFF; padding: 0 5px;}
+.updateButton,
+.modifyField {background: #9BBA58; color: #FFF; padding: 0 5px;}
